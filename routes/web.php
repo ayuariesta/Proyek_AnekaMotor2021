@@ -26,3 +26,4 @@ Route::post('contact/{id}', [App\Http\Controllers\ContactController::class, 'sav
 Route::get('/about', [App\Http\Controllers\AboutController::class, 'index'])->name('about');
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
 Route::get('/booking', [App\Http\Controllers\BookingController::class, 'index'])->name('booking');
+Route::post('booking/{id}', [App\Http\Controllers\BookingController::class, 'save']);

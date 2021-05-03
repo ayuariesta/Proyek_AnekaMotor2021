@@ -33,13 +33,41 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12 mt-2">
-				<form method="post" id="contactform">
+				<form method="POST" action="{{ url('booking') }}/{{ auth()->user()->id }}" id="contactform">
+					{{ csrf_field() }}
 					<div class="form">
-						<input class="place" type="text" name="name" placeholder="The name of the booking">
-						<input class="place" type="text" name="namestnk" placeholder="Enter the name listed on the STNK">
-						<input class="place" type="text" name="number" placeholder="Enter your plate number">
-						<input class="place" type="date" name="date" placeholder="Enter the service date">
-						<textarea class="place" name="comment" rows="7" placeholder="Enter your motorcycle complaint"></textarea>
+						<div class="col">
+							<input class="place @error('name_stnk') is-invalid @enderror" type="text" name="name_stnk" placeholder="Enter the name listed on the STNK">
+							@error('name_stnk')
+							<span class="invalid-feedback" role="alert">
+								<strong>{{ $message }}</strong>
+							</span>
+							@enderror
+						</div>
+						<div class="col">
+							<input class="place  @error('number_plat') is-invalid @enderror" type="text" name="number_plat" placeholder="Enter your plate number">
+							@error('number_plat')
+							<span class="invalid-feedback" role="alert">
+								<strong>{{ $message }}</strong>
+							</span>
+							@enderror
+						</div>
+						<div class="col">
+							<input class="place @error('service_date') is-invalid @enderror" type="date" name="service_date" placeholder="Enter the service date">
+							@error('service_date')
+							<span class="invalid-feedback" role="alert">
+								<strong>{{ $message }}</strong>
+							</span>
+							@enderror
+						</div>
+						<div class="col">
+							<textarea class="place @error('service_complaint') is-invalid @enderror" name="complaint" rows="7" placeholder="Enter your motorcycle complaint"></textarea>
+							@error('complaint')
+							<span class="invalid-feedback" role="alert">
+								<strong>{{ $message }}</strong>
+							</span>
+							@enderror
+						</div>
 						<input type="submit" id="submit" class="clearfix btn" value="Send">
 					</div>
 				</form>
