@@ -52,6 +52,23 @@
 							</span>
 							@enderror
 						</div>
+
+						<div class="col">
+							<input class="place  @error('nama_motor') is-invalid @enderror" type="text" name="nama_motor" placeholder="Enter the name of the motorbike">
+							@error('nama_motor')
+							<span class="invalid-feedback" role="alert">
+								<strong>{{ $message }}</strong>
+							</span>
+							@enderror
+						</div>
+						<div class="col">
+							<input class="place  @error('jenis_motor') is-invalid @enderror" type="text" name="jenis_motor" placeholder="Enter the type of motorbike">
+							@error('jenis_motor')
+							<span class="invalid-feedback" role="alert">
+								<strong>{{ $message }}</strong>
+							</span>
+							@enderror
+						</div>
 						<div class="col">
 							<input class="place @error('service_date') is-invalid @enderror" type="date" name="service_date" placeholder="Enter the service date">
 							@error('service_date')

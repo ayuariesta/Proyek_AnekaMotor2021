@@ -29,6 +29,8 @@ class BookingController extends Controller
         $booking->user_id = $user->id;
         $booking->name_stnk = $request->name_stnk;
         $booking->number_plat = $request->number_plat;
+        $booking->nama_motor = $request->nama_motor;
+        $booking->jenis_motor = $request->jenis_motor;
         $booking->service_date = $request->service_date;
         $booking->complaint = $request->complaint;
         $booking->save();
