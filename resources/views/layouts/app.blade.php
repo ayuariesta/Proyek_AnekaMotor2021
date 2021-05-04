@@ -50,6 +50,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/about">About Us</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Service History</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -86,7 +89,7 @@
                                 </a>
 
                                 <a class="dropdown-item" href="{{ url('history') }}">
-                                    Service History
+                                    Booking History
                                 </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

@@ -113,7 +113,7 @@ a:active {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.8);
 }
 
 .item3.header,
@@ -231,7 +231,7 @@ a:active {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.8);
 }
 
 .item1.header,
@@ -955,6 +955,13 @@ a.homebrowseitems:hover {
 	background:#ecebeb;
   position: relative;
 	margin-top:-100px;
+	padding-top:30px;
+}
+
+.toparea1 {
+	background:transparent;
+  position: relative;
+	margin-top:-180px;
 	padding-top:30px;
 }
 

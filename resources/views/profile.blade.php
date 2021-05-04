@@ -3,7 +3,7 @@
 @section('content')
 <style>
     body {
-        background-image: url(images/getstarted.jpeg);
+        background-image: url(images/background_login.jpg);
         background-repeat: no-repeat;
         background-size: cover;
         background-attachment: scroll;

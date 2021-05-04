@@ -35,6 +35,6 @@ class BookingController extends Controller
         $booking->complaint = $request->complaint;
         $booking->save();
         alert()->success('Thank you for booking');
-        return redirect('home');
+        return redirect('history');
     }
 }

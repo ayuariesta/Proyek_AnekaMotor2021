@@ -25,6 +25,9 @@ Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])
 Route::post('contact/{id}', [App\Http\Controllers\ContactController::class, 'save']);
 Route::get('/about', [App\Http\Controllers\AboutController::class, 'index'])->name('about');
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
+Route::post('/profile',  [App\Http\Controllers\ProfileController::class, 'update']);
 Route::get('/booking', [App\Http\Controllers\BookingController::class, 'index'])->name('booking');
 Route::post('booking/{id}', [App\Http\Controllers\BookingController::class, 'save']);
 Route::get('/history', [App\Http\Controllers\HistoryController::class, 'index'])->name('history');
+Route::get('history/{id}', [App\Http\Controllers\HistoryController::class, 'detail']);
+Route::post('/booking/{id}',  [App\Http\Controllers\HistoryController::class, 'update']);
