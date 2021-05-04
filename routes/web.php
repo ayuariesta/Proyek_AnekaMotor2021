@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('admin/home', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact');
 Route::post('contact/{id}', [App\Http\Controllers\ContactController::class, 'save']);
@@ -31,3 +31,10 @@ Route::post('booking/{id}', [App\Http\Controllers\BookingController::class, 'sav
 Route::get('/history', [App\Http\Controllers\HistoryController::class, 'index'])->name('history');
 Route::get('history/{id}', [App\Http\Controllers\HistoryController::class, 'detail']);
 Route::post('/booking/{id}',  [App\Http\Controllers\HistoryController::class, 'update']);
+
+Route::group(['middleware' => 'is_admin'], function () {
+    Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home');
+    Route::delete('/customers/{id}', [App\Http\Controllers\Admin\CustomerController::class, 'delete']);
+    Route::get('users_server_side', [App\Http\Controllers\Admin\CustomerController::class, 'getAllUserServerSide'])->name("user.data");
+    Route::get('index_get_user', [App\Http\Controllers\Admin\CustomerController::class, 'indexGetUser']);
+});

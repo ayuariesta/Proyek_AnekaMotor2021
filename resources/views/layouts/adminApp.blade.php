@@ -8,11 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Custom fonts for this template-->
-    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -56,7 +55,7 @@
             <hr class="sidebar-divider">
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ url('index_get_user')}}">
                     <i class="fas fa-users"></i>
                     <span>Users</span>
                 </a>
@@ -140,9 +139,6 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                    </div>
 
                     <main>
                         @yield('content')
@@ -152,7 +148,7 @@
                     <footer class="sticky-footer bg-white">
                         <div class="container my-auto">
                             <div class="copyright text-center my-auto">
-                                <span>Copyright &copy; Your Website 2020</span>
+                                <span>Copyright &copy; Your Website 2021</span>
                             </div>
                         </div>
                     </footer>
@@ -180,6 +176,14 @@
             <!-- Page level custom scripts -->
             <script src="demo/chart-area-demo.js"></script>
             <script src="demo/chart-pie-demo.js"></script>
+
+
+            <!-- Page level plugins -->
+            <script src="datatables/jquery.dataTables.min.js"></script>
+            <script src="datatables/dataTables.bootstrap4.min.js"></script>
+
+            <!-- Page level custom scripts -->
+            <script src="demo/datatables-demo.js"></script>
 
 </body>
 
