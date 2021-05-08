@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Booking;
 use Auth;
 use Alert;
+use App\Models\Service;
 
-class BookingController extends Controller
+class ServiceController extends Controller
 {
     public function __construct()
     {
@@ -23,9 +23,9 @@ class BookingController extends Controller
     public function save(Request $request)
     {
         $user = User::where('id', Auth::user()->id)->first();
-        $booking = Booking::where('user_id', $user->id)->first();
+        $booking = Service::where('user_id', $user->id)->first();
 
-        $booking = new Booking;
+        $booking = new Service();
         $booking->user_id = $user->id;
         $booking->name_stnk = $request->name_stnk;
         $booking->number_plat = $request->number_plat;

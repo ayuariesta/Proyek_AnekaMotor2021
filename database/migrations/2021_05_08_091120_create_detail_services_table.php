@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDetailPaymentsTable extends Migration
+class CreateDetailServicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateDetailPaymentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('detail_payments', function (Blueprint $table) {
+        Schema::create('detail_services', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('service_id')->unsigned();
+            $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('sparepart_id')->unsigned();
             $table->foreign('sparepart_id')->references('id')->on('spareparts')->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('payment_id')->unsigned();
-            $table->foreign('payment_id')->references('id')->on('payments')->onDelete('cascade')->onUpdate('cascade');
             $table->string('sparepartName');
             $table->integer('total_sparepart');
             $table->integer('price');
@@ -34,6 +34,6 @@ class CreateDetailPaymentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('detail_payments');
+        Schema::dropIfExists('detail_services');
     }
 }

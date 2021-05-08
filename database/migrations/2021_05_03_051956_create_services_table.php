@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBookingsTable extends Migration
+class CreateServicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateBookingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('bookings', function (Blueprint $table) {
+        Schema::create('services', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
@@ -25,6 +25,10 @@ class CreateBookingsTable extends Migration
             $table->date('service_date');
             $table->text('complaint');
             $table->string('status')->default('pending');
+            $table->string('jenis_service')->nullable();
+            $table->string('tindakan')->nullable();
+            $table->integer('total_price')->nullable();
+            $table->integer('code_unic')->nullable();    
             $table->timestamps();
         });
     }

@@ -15,12 +15,12 @@ class CreateSparepartsTable extends Migration
     {
         Schema::create('spareparts', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('category_id')->unsigned();
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
             $table->string('name');
             $table->integer('price');
             $table->boolean('is_ready')->default(true);
-            $table->text('description');
-            $table->integer('qty');
-            $table->string('picture');
+            $table->integer('stock');
             $table->timestamps();
         });
     }

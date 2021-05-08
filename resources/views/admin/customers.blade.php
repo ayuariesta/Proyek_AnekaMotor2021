@@ -17,9 +17,9 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered yajra-datatable" id="data_users_side" width="100%" cellspacing="0">
+                <table style="color: 	#708090;" class="table table-bordered table-striped yajra-datatable" id="data_users_side" width="100%" cellspacing="0">
                     <thead>
-                        <tr>
+                        <tr  class="text-center">
                             <th>No</th>
                             <th>Name</th>
                             <th>Email</th>
@@ -29,7 +29,27 @@
                         </tr>
                     </thead>
                 </table>
+            </div>
+        </div>
+    </div>
+</div>
 
+<div class="modal" id="DeleteArticleModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">User Delete</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <h4>Are you sure want to delete this User?</h4>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" id="SubmitDeleteArticleForm">Yes</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
             </div>
         </div>
     </div>
@@ -47,7 +67,9 @@
     var table = $('.yajra-datatable').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ route('user.data') }}",
+        autoWidth: false,
+            pageLength: 5,
+        ajax: "{{ route('index_get_user.index') }}",
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
             {data: 'name', name: 'name'},
@@ -62,6 +84,31 @@
             },
         ]
     });
+
+     // Delete article Ajax request.
+     var deleteID;
+        $('body').on('click', '#getDeleteId', function(){
+            deleteID = $(this).data('id');
+        })
+        $('#SubmitDeleteArticleForm').click(function(e) {
+            e.preventDefault();
+            var id = deleteID;
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                url: "index_get_user/"+id,
+                method: 'DELETE',
+                success: function(result) {
+                    setInterval(function(){ 
+                        $('.yajra-datatable').DataTable().ajax.reload();
+                        $('#DeleteArticleModal').hide();
+                    }, 1000);
+                }
+            });
+        });
     
   });
 </script>

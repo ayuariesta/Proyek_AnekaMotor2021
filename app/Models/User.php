@@ -46,8 +46,13 @@ class User extends Authenticatable
         return $this->hasMany(Contact::class, 'user_id', 'id');
     }
 
-    public function bookings()
+    public function services()
     {
-        return $this->hasMany(Booking::class, 'user_id', 'id');
+        return $this->hasMany(Service::class, 'user_id', 'id');
+    }
+
+    public function deleteData($id)
+    {
+        return static::find($id)->delete();
     }
 }

@@ -15,16 +15,13 @@ class CreatePaymentsTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('booking_id')->unsigned();
-            $table->foreign('booking_id')->references('id')->on('bookings')->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('total_price');
-            $table->date('order_date');
-            $table->integer('code_unic');
-            $table->string('pelanggan')->nullable();
-            $table->string('bank')->nullable();
-            $table->date('payment_date')->nullable();
-            $table->integer('payment_total')->nullable();
-            $table->string('buktiPayment')->nullable();   
+            $table->integer('service_id')->unsigned();
+            $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('namaRek');
+            $table->string('bank');
+            $table->string('buktiPayment');  
+            $table->integer('total');
+            $table->date('order_date'); 
             $table->timestamps();
         });
     }
