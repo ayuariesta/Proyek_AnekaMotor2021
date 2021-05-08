@@ -17,6 +17,8 @@ class CreateServicesTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->integer('jenisService_id')->unsigned();
+            $table->foreign('jenisService_id')->references('id')->on('jenis_services')->onDelete('cascade')->onUpdate('cascade');
             $table->string('queue')->nullable();
             $table->string('name_stnk');
             $table->string('number_plat');
@@ -40,6 +42,6 @@ class CreateServicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bookings');
+        Schema::dropIfExists('services');
     }
 }

@@ -12,6 +12,11 @@ class Service extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
+    public function jenisService()
+    {
+        return $this->belongsTo(JenisService::class, 'jenisService_id', 'id');
+    }
+
     public function detail_services()
     {
         return $this->hasMany(DetailService::class, 'service_id', 'id');

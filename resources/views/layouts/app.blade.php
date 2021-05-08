@@ -52,11 +52,29 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/home">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('contact') }}">Contact</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/about">About Us</a>
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                Sparepart
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                              
+                                <a class="dropdown-item" href="#">
+                                    Honda
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    Yamaha
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    Suzuki
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    Kawasaki
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    All Sparepart
+                                </a>
+                            </div>
                         </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -73,6 +91,12 @@
                                 </a>
 
                             </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('contact') }}">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about">About Us</a>
                         </li>
                     </ul>
 

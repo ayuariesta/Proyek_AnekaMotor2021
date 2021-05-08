@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDetailServicesTable extends Migration
+class CreatePaymetsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,15 @@ class CreateDetailServicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('detail_services', function (Blueprint $table) {
+        Schema::create('paymets', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('service_id')->unsigned();
             $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('sparepart_id')->unsigned();
-            $table->foreign('sparepart_id')->references('id')->on('spareparts')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('sparepartName');
-            $table->integer('total_sparepart');
-            $table->integer('price');
-            $table->integer('total_price');
+            $table->string('namaRek');
+            $table->string('bank');
+            $table->string('buktiPayment');  
+            $table->integer('total');
+            $table->date('order_date'); 
             $table->timestamps();
         });
     }
@@ -34,6 +33,6 @@ class CreateDetailServicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('detail_services');
+        Schema::dropIfExists('paymets');
     }
 }
