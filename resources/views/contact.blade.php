@@ -109,7 +109,7 @@
 								<p style="font-size: 13px; color: #444; text-align:justify;"> Motorbikes are a valuable asset in society because motorbikes can be a means of transportation, a hobby and, a lifestyle. 
 									Therefore, it is necessary to repair it periodically so that it is not damaged. 
 									Aneka Motor Wlingi provides a workshop that guarantees excellent, fast and affordable service quality 
-								<a target="_blank" rel="nofollow" href="{{ route('booking') }}">for booking now...</a></p>
+								<a target="_blank" rel="nofollow" href="{{ url('booking') }}">for booking now...</a></p>
 							</div>
 						</div>
 					</div>

@@ -15,9 +15,9 @@ class CreateServicesTable extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
+            $table->integer('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('jenisService_id')->unsigned();
+            $table->integer('jenisService_id')->unsigned()->nullable();
             $table->foreign('jenisService_id')->references('id')->on('jenis_services')->onDelete('cascade')->onUpdate('cascade');
             $table->string('queue')->nullable();
             $table->string('name_stnk');

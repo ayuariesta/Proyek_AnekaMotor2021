@@ -13,7 +13,7 @@
 					</center><br><br>
 					<div class="item content">
 						<div class="container text-center">
-							<a href="{{ route('booking') }}" class="homebrowseitems">Booking Service
+							<a href="{{ url('booking') }}" class="homebrowseitems">Booking Service
 								<div class="homebrowseitemsicon">
 									<i class="fa fa-star fa-spin"></i>
 								</div>
@@ -64,6 +64,64 @@
 		</div>
 	</div>
 </div><br><br>
+<!-- CONTENT =============================-->
+<section class="item content">
+	<div class="container toparea2">
+	<div class="underlined-title">
+		<div class="editContent">
+			<h1 class="text-center latestitems">READ THIS, HEHE</h1>
+		</div>
+		<div class="wow-hr type_short">
+			<span class="wow-hr-h">
+			<i class="fa fa-star"></i>
+			<i class="fa fa-star"></i>
+			<i class="fa fa-star"></i>
+			</span>
+		</div>
+	</div>
+		<div class="row">
+			<div class="col-md-8">
+				<div class="productbox2">
+					<img src="images/getstarted.jpg" alt="" width="100%">
+					<div class="clearfix">
+					</div>
+					<br />
+					<div class="product-details text-left">
+						<p style="font-size: 15px; color: #444; text-align:justify;"> Motorbikes are a valuable asset in society because motorbikes can be a means of transportation, a hobby and, a lifestyle.
+							Therefore, it is necessary to repair it periodically so that it is not damaged.
+							Aneka Motor Wlingi provides a workshop that guarantees excellent, fast and affordable service quality
+							<a target="_blank" rel="nofollow" href="{{ url('booking') }}">for booking now...</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<h2 class="btn btn-buynow">Price list</h2>
+				<div class="properties-box">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>No</th>
+								<th>Type of Service</th>
+								<th>Price</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php $no = 1; ?>
+							@foreach($jenis_services as $jenis_service )
+							<tr>
+								<td style="color: #444;">{{ $no++ }}</td>
+								<td style="color: #444;">{{ $jenis_service->name }}</td>
+								<td style="color: #444;">Rp. {{ number_format($jenis_service->price) }}</td>
+							</tr>
+							@endforeach
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div><br>
+</section>
 <!-- LATEST ITEMS =============================-->
 <section class="item content">
 	<div class="container">

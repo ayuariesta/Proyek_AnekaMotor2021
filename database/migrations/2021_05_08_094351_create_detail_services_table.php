@@ -17,7 +17,7 @@ class CreateDetailServicesTable extends Migration
             $table->increments('id');
             $table->integer('service_id')->unsigned();
             $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('sparepart_id')->unsigned();
+            $table->integer('sparepart_id')->unsigned()->nullable();
             $table->foreign('sparepart_id')->references('id')->on('spareparts')->onDelete('cascade')->onUpdate('cascade');
             $table->string('sparepartName');
             $table->integer('total_sparepart');

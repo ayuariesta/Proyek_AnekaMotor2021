@@ -62,6 +62,13 @@
             </li>
 
             <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ url('index_get_typeService')}}">
+                    <i class="fas fa-quote-right"></i>
+                    <span>Type of Service</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="#">
                     <i class="far fa-address-book"></i>
                     <span>Contact Me</span>

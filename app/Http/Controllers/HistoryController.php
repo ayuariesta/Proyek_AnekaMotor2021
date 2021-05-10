@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Booking;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Auth;
 use Alert;
@@ -16,21 +16,21 @@ class HistoryController extends Controller
 
     public function index()
     {
-        $bookings = Booking::where('user_id', Auth::user()->id)->get();
+        $bookings = Service::where('user_id', Auth::user()->id)->get();
         return view('history', compact('bookings'));
     }
 
     public function detail($id)
     {
-        $booking = Booking::where('id', $id)->first();
-        $bookings = Booking::where('id', $booking->id)->get();
+        $booking = Service::where('id', $id)->first();
+        $bookings = Service::where('id', $booking->id)->get();
         return view('historyDetail', compact('bookings', 'booking'));
     }
 
     public function update(Request $request, $id)
     {
 
-    	$booking = Booking::findOrFail($id);
+    	$booking = Service::findOrFail($id);
     	$booking->name_stnk = $request->name_stnk;
     	$booking->number_plat = $request->number_plat;
     	$booking->nama_motor = $request->nama_motor;

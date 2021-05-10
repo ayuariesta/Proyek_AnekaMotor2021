@@ -23,17 +23,16 @@ class ServiceController extends Controller
     public function save(Request $request)
     {
         $user = User::where('id', Auth::user()->id)->first();
-        $booking = Service::where('user_id', $user->id)->first();
-
-        $booking = new Service();
-        $booking->user_id = $user->id;
-        $booking->name_stnk = $request->name_stnk;
-        $booking->number_plat = $request->number_plat;
-        $booking->nama_motor = $request->nama_motor;
-        $booking->jenis_motor = $request->jenis_motor;
-        $booking->service_date = $request->service_date;
-        $booking->complaint = $request->complaint;
-        $booking->save();
+        $service = Service::where('user_id', $user->id)->first();
+        $service= new Service();
+        $service->user_id = $user->id;
+        $service->name_stnk = $request->name_stnk;
+        $service->number_plat = $request->number_plat;
+        $service->nama_motor = $request->nama_motor;
+        $service->jenis_motor = $request->jenis_motor;
+        $service->service_date = $request->service_date;
+        $service->complaint = $request->complaint;
+        $service->save();
         alert()->success('Thank you for booking');
         return redirect('history');
     }

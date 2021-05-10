@@ -11,8 +11,6 @@ use Illuminate\Support\Facades\Cache;
 class CustomerController extends Controller
 {
 
-   
-
     public function index(Request $request)
     {
         if ($request->ajax()) {

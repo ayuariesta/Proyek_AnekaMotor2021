@@ -958,6 +958,37 @@ a.homebrowseitems:hover {
 	padding-top:30px;
 }
 
+.properties-box {
+	padding:20px 20px 15px 20px;
+	border:1px solid #e4e4e4;
+  background-color: #F5F5F5;
+	margin-top:25px;
+	clear:both;
+	float:none;
+	line-height:1.7;
+}
+
+.btn-buynow {
+	font-size:25px;
+	padding:14px 25px;
+	text-decoration:none;
+	color:#fff;
+	text-align:center;
+	font-weight:400;
+	border-bottom:5px solid rgba(0,0,0,0.1);
+	text-transform:uppercase;
+	border-radius:0;
+	display:block;
+	background:#8B0000;
+}
+
+.toparea2 {
+	background:#ecebeb;
+  position: relative;
+	margin-top:0px;
+	padding-top:30px;
+}
+
 .toparea1 {
 	background:transparent;
   position: relative;
@@ -1145,4 +1176,36 @@ img {
 
 .place::-webkit-input-placeholder{
 	color: darkgray;
+}
+
+.productbox2 {
+	background:	#F5F5F5;
+	padding:13px;
+	border:1px solid #e4e4e4;
+	margin-bottom:30px;
+}
+.latest-items .productbox2 {
+	margin-bottom:30px;
+}
+.productbox2 h1 {
+	display:block;
+	font-size:17px;
+	text-transform:uppercase;
+	margin-top:15px;
+	border-bottom:double medium #eee;
+	padding-bottom:15px;
+	margin-bottom:10px;
+	font-weight:500;
+	color:#333;
+}
+.product-details {
+	padding:6px 0 0 0;
+	text-align:center;
+	color:#444;
+}
+.productbox2 .price {
+	font-weight:400;
+}
+.shopsection .productbox2 {
+	margin-bottom:30px;
 }

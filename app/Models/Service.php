@@ -14,7 +14,7 @@ class Service extends Model
 
     public function jenisService()
     {
-        return $this->belongsTo(JenisService::class, 'jenisService_id', 'id');
+        return $this->belongsTo(Jenis_Service::class, 'jenisService_id', 'id');
     }
 
     public function detail_services()
