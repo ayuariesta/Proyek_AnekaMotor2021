@@ -69,6 +69,13 @@
             </li>
 
             <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('bookingdata') }}">
+                <i class="far fa-clipboard"></i>
+                    <span>Booking Service</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="#">
                     <i class="far fa-address-book"></i>
                     <span>Contact Me</span>

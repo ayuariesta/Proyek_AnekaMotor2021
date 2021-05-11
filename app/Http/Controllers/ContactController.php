@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Auth;
@@ -18,7 +19,8 @@ class ContactController extends Controller
     public function index()
     {
         $contacts = Contact::where('user_id', Auth::user()->id)->orderByRaw('id DESC')->get();
-    	return view('contact', compact('contacts'));
+        $categories = Category::all();
+    	return view('contact', compact('contacts', 'categories'));
     }
 
     public function save(Request $request)

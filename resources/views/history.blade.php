@@ -25,7 +25,7 @@
                     <div class="card-body">
                         <table class="table table-striped">
                             <thead>
-                                <tr>
+                                <tr class="text-center">
                                     <th>No</th>
                                     <th>Motorcycle Name</th>
                                     <th>Service Date</th>
@@ -36,7 +36,7 @@
                             <tbody>
                                 <?php $no = 1; ?>
                                 @foreach($bookings as $booking)
-                                <tr>
+                                <tr class="text-center">
                                     <td style="color: #444;">{{ $no++ }}</td>
                                     <td style="color: #444;">{{ $booking->nama_motor }}</td>
                                     <td style="color: #444;">{{ $booking->service_date }}</td>
@@ -44,16 +44,16 @@
                                         {{$booking->status}}
                                         <br>
                                         @if($booking->queue != null)
-                                        No. Receipt : {{ $booking->queue}}
+                                        No : {{ $booking->queue}}
                                     </td>
                                     @endif
                                     <td style="color: #444;">
-                                        @if($booking->status == 'pending' || 'Queue available')
+
                                         <a href="{{ url('history') }}/{{ $booking->id }}" class="btn btn-primary"><i class="fa fa-info"></i> Detail Booking</a>
-                                        @elseif($booking->status == 'Service complete')
-                                        <a href="#" class="btn" style="background-color: 	#FFA07A;"><i class="fa fa-info"></i> Input Payment</a>
+                                        @if($booking->status == 'Service complete')
+                                        <a href="{{ url('payment') }}/{{ $booking->id }}" class="btn btn-primary"><i class="fa fa-info"></i> Input Payment</a>
                                         @elseif ($booking->status == 'Payment confirmed')
-                                        <a href="#" class="btn" style="background-color: 	#F08080 ;"><i class="fa fa-info"></i> See Payment</a>
+                                        <a href="#" class="btn btn-primary" <i class="fa fa-info"></i> See Payment</a>
                                         @endif
                                     </td>
                                 </tr>

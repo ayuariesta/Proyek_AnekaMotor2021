@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Service;
 use Illuminate\Http\Request;
+use App\Models\Category;
 use Auth;
 use Alert;
 
@@ -17,14 +18,16 @@ class HistoryController extends Controller
     public function index()
     {
         $bookings = Service::where('user_id', Auth::user()->id)->get();
-        return view('history', compact('bookings'));
+        $categories = Category::all();
+        return view('history', compact('bookings', 'categories'));
     }
 
     public function detail($id)
     {
         $booking = Service::where('id', $id)->first();
         $bookings = Service::where('id', $booking->id)->get();
-        return view('historyDetail', compact('bookings', 'booking'));
+        $categories = Category::all();
+        return view('historyDetail', compact('bookings', 'booking', 'categories'));
     }
 
     public function update(Request $request, $id)

@@ -71,16 +71,22 @@
             pageLength: 5,
         ajax: "{{ route('index_get_user.index') }}",
         columns: [
-            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-            {data: 'name', name: 'name'},
-            {data: 'email', name: 'email'},
-            {data: 'phoneNumber', name: 'phoneNumber'},
-            {data: 'address', name: 'address'},
+            {data: 'DT_RowIndex', name: 'DT_RowIndex',
+                sClass:'text-center'},
+            {data: 'name', name: 'name',
+                sClass:'text-center'},
+            {data: 'email', name: 'email',
+                sClass:'text-center'},
+            {data: 'phoneNumber', name: 'phoneNumber',
+                sClass:'text-center'},
+            {data: 'address', name: 'address',
+                sClass:'text-center'},
             {
                 data: 'action', 
                 name: 'action', 
                 orderable: true, 
-                searchable: true
+                searchable: true,
+                sClass:'text-center'
             },
         ]
     });

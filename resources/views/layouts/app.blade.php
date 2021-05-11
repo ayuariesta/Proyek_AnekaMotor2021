@@ -58,20 +58,12 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                              
-                                <a class="dropdown-item" href="#">
-                                    Honda
+                                @foreach($categories as $category)
+                                <a class="dropdown-item" href="{{ route('spareparts.category', $category->id) }}">
+                                    {{ $category->name }}
                                 </a>
-                                <a class="dropdown-item" href="#">
-                                    Yamaha
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    Suzuki
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    Kawasaki
-                                </a>
-                                <a class="dropdown-item" href="#">
+                                @endforeach
+                                <a class="dropdown-item" href="{{ url('sparepart') }}">
                                     All Sparepart
                                 </a>
                             </div>
@@ -82,7 +74,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                              
+
                                 <a class="dropdown-item" href="{{ url('history') }}">
                                     Booking History
                                 </a>

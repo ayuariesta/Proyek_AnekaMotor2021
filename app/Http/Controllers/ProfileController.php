@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Auth;
 use Alert;
 use App\Models\User;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -17,7 +18,8 @@ class ProfileController extends Controller
     public function index()
     {
         $user = User::where('id', Auth::user()->id)->first();
-    	return view('profile', compact('user'));
+		$categories = Category::all();
+    	return view('profile', compact('user', 'categories'));
     }
 
     public function update(Request $request)

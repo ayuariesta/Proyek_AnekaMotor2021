@@ -762,7 +762,7 @@ a:active {
 
 .form-control::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
-  color: rgba(255, 255, 255, 0.5);
+  color:gray;
 }
 
 .form-control::-moz-placeholder {

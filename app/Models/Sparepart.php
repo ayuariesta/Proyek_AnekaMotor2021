@@ -16,3 +16,4 @@ class Sparepart extends Model
     {
         return $this->hasMany(DetailService::class, 'sparepart_id', 'id');
     }
+}

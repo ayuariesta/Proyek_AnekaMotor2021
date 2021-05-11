@@ -19,7 +19,7 @@ class CreateServicesTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('jenisService_id')->unsigned()->nullable();
             $table->foreign('jenisService_id')->references('id')->on('jenis_services')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('queue')->nullable();
+            $table->string('queue')->nullable()->unique();
             $table->string('name_stnk');
             $table->string('number_plat');
             $table->string('nama_motor');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Category;
 use Auth;
 use Alert;
 use App\Models\Service;
@@ -17,7 +18,9 @@ class ServiceController extends Controller
 
     public function index()
     {
-        return view('booking');
+        return view('booking', [
+            'categories' => Category::all()
+        ]);
     }
 
     public function save(Request $request)
