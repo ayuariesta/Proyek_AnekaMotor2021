@@ -36,10 +36,9 @@
                                         </td>
                                         @endif
                                         <td>
-                                            @if($service->status == 'pending' || 'Queue available' || 'Being serviced')
                                             <a href="{{ url('bookingdata/detail') }}/{{ $service->id }}" class="btn" style="background: #8B0000; color: white;"><i class="fa fa-info"></i> Detail</a>
-                                            @elseif($service->status == 'Payment confirmed')
-                                            <a href="#" class="btn" style="background: #8B0000; color: white;"><i class="fa fa-info"></i> See Payment</a>
+                                            @if($service->status == 'Service complete')
+                                            <a href="{{ url('bookingdata/invoice') }}/{{ $service->id }}" class="btn" style="background: #8B0000; color: white;"><i class="fa fa-info"></i> Invoice</a>
                                             @endif
                                         </td>
                                     </tr>

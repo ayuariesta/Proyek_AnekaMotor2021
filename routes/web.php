@@ -44,4 +44,5 @@ Route::group(['middleware' => 'is_admin'], function () {
     Route::get('bookingdata', [App\Http\Controllers\Admin\BookingDataController::class, 'index'])->name('bookingdata');
     Route::get('bookingdata/detail/{id}', [App\Http\Controllers\Admin\BookingDataController::class, 'detail']);
     Route::post('bookingdata/detail/input_queue/{id}',[App\Http\Controllers\Admin\BookingDataController::class, 'save']);
+    Route::get('bookingdata/invoice/{id}', [App\Http\Controllers\Admin\InvoiceController::class, 'detail']);
 });
