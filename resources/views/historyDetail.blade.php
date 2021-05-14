@@ -68,7 +68,7 @@
                 <div class="card-body">
                     <h4 style="color: #8B0000;"><i style="color: #8B0000;" class="fa fa-pencil-alt"></i> Edit Booking</h4>
                     <br>
-                    <form method="POST" action="{{ url('booking') }}/{{ $booking->id }}">
+                    <form method="POST" action="{{ url('historyEdit') }}/{{ $booking->id }}">
                         @csrf
 
                         <div class="form-group row">

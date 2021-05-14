@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Category;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Alert;
 use App\Models\Service;
 
@@ -23,9 +23,9 @@ class ServiceController extends Controller
         ]);
     }
 
-    public function save(Request $request)
+    public function save(Request $request, $id)
     {
-        $user = User::where('id', Auth::user()->id)->first();
+        $user = User::where('id', $id)->first();
         $service = Service::where('user_id', $user->id)->first();
         $service= new Service();
         $service->user_id = $user->id;

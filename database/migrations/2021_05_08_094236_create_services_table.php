@@ -30,7 +30,6 @@ class CreateServicesTable extends Migration
             $table->string('jenis_service')->nullable();
             $table->string('tindakan')->nullable();
             $table->integer('total_price')->nullable();
-            $table->integer('code_unic')->nullable();    
             $table->timestamps();
         });
     }

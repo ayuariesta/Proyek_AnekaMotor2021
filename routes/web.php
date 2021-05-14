@@ -26,9 +26,9 @@ Route::post('contact/{id}', [App\Http\Controllers\ContactController::class, 'sav
 Route::get('/about', [App\Http\Controllers\AboutController::class, 'index'])->name('about');
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
 Route::post('/profile',  [App\Http\Controllers\ProfileController::class, 'update']);
-Route::resource('booking', 'App\Http\Controllers\ServiceController');
-Route::post('booking/{id}', [App\Http\Controllers\ServiceController::class, 'save']);
-Route::post('/booking/{id}',  [App\Http\Controllers\HistoryController::class, 'update']);
+Route::get('/booking',  [App\Http\Controllers\ServiceController::class, 'index']);
+Route::post('/booking/{id}',  [App\Http\Controllers\ServiceController::class, 'save']);
+Route::post('/historyEdit/{id}',  [App\Http\Controllers\HistoryController::class, 'update']);
 Route::get('/history', [App\Http\Controllers\HistoryController::class, 'index'])->name('history');
 Route::get('history/{id}', [App\Http\Controllers\HistoryController::class, 'detail']);
 Route::get('payment/{id}', [App\Http\Controllers\PaymentController::class, 'index']);
@@ -45,4 +45,8 @@ Route::group(['middleware' => 'is_admin'], function () {
     Route::get('bookingdata/detail/{id}', [App\Http\Controllers\Admin\BookingDataController::class, 'detail']);
     Route::post('bookingdata/detail/input_queue/{id}',[App\Http\Controllers\Admin\BookingDataController::class, 'save']);
     Route::get('bookingdata/invoice/{id}', [App\Http\Controllers\Admin\InvoiceController::class, 'detail']);
+    Route::get('/addSaprepart', [App\Http\Controllers\Admin\InvoiceController::class, 'render']);
+    Route::post('/sparepart/need/{id}', [App\Http\Controllers\Admin\InvoiceController::class, 'order']);
+    Route::delete('sparepartDelete/{id}',  [App\Http\Controllers\Admin\InvoiceController::class, 'delete']);
+    Route::post('InvoiceCompleted/{id}',[App\Http\Controllers\Admin\InvoiceController::class, 'konfirmasi']);
 });

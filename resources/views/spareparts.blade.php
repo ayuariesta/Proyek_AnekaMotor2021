@@ -47,7 +47,7 @@
                                 @foreach($spareparts as $sparepart)
                                 <tr class="text-center">
                                     <td style="color: #444;">{{ $no++ }}</td>
-                                    <td style="color: #444;">{{ $sparepart->name }}</td>
+                                    <td style="color: #444;">{{ $sparepart->nameS }}</td>
                                     <td style="color: #444;">Rp. {{ number_format($sparepart->price) }}</td>
                                     <td style="color: #444;">{{ $sparepart->stock }} pcs</td>
                                 </tr>

@@ -41,22 +41,68 @@
                                     <td>:</td>
                                     <td>{{ $booking->complaint }}</td>
                                 </tr>
-                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div><br>
+            <div class="col-md-12">
+                <div class="form-group row mb-0 mt-0">
+                    <div class="col-md-12 offset-md-0">
+                        <a href="/addSaprepart" class="btn" style=" width: 200px;font-weight: bold; font-size: 16px; background:  black; color: white;">
+                            Add Spareparts
+                        </a>
+                    </div>
+                    @endforeach
+                </div><br>
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table table-striped"">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Sparepart Name</th>
+                                <th>Total Sparepart</th>
+                                <th>Price</th>
+                                <th>Total Price</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody >
+                            <?php $no = 1; ?>
+                            @foreach($service_details as $service_detail)
+                            <tr>
+                                <td>{{ $no++ }}</td>
+                                <td>{{ $service_detail->sparepart->nameS }}</td>
+                                <td>{{ $service_detail->total_sparepart }} sparepart </td>
+                                <td>Rp. {{ number_format($service_detail->sparepart->price) }}</td>
+                                <td>Rp. {{ number_format($service_detail->total_price) }}</td>
+                                <td>
+                                    <form action=" {{ url('sparepartDelete') }}/{{ $service_detail->id }}" method="post">
+                            @csrf
+                            {{ method_field('DELETE') }}
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete data?');"><i class="fa fa-trash"></i></button>
+                            </form>
+                            </td>
+                            </tr>
+                            @endforeach
+                            <tr>
+                                <td colspan="5" align="right"><strong>Total Price :</strong></td>
+                                <td align="right"><strong>Rp. {{ number_format($booking->total_price) }}</strong></td>
+                            </tr>
                             </tbody>
                         </table>
                         @endif
                     </div>
-                </div>
-            </div>
-            <div class="col-md-12">
+                </div><br>
                 <div class="card">
                     <div class="card-body">
-                        <form method="POST" action="{{ url('bookingdata/detail/input_queue') }}/{{ $booking->id }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ url('InvoiceCompleted') }}/{{ $booking->id }}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group row">
                                 <label for="squareInput" class="col-md-5 col-form-label" style="color: #8B0000;">Type of services</label>
                                 <div class="col-md-7">
-                                    <select class="custom-select" name="id_ongkir">
+                                    <select class="custom-select" name="id_jenisService">
                                         <option selected>Select Type of Service</option>
                                         @foreach($jenisServices as $jenisService)
                                         <option value="{{ $jenisService->id }}">{{ $jenisService->name }} - Rp. {{number_format($jenisService->price)}}</option>
@@ -69,20 +115,17 @@
 
                                 <div class="col-md-7">
                                     <textarea placeholder="Enter service actions..." required="" style="color: gray;" id="tindakan" class="form-control @error('tindakan') is-invalid @enderror" name="tindakan"></textarea>
-                                    
+
                                     @error('tindakan')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                    @enderror 
+                                    @enderror
                                 </div>
                             </div>
                             <div class="form-group row mb-0 mt-0">
                                 <div class="col-md-12 offset-md-0" align="right">
-                                <button type="submit" class="btn" style=" width: 200px;font-weight: bold; font-size: 16px; background:  black; color: white;">
-                                Add Spareparts
-                                    </button>
-                                    <button type="submit" class="btn" style=" width: 100px;font-weight: bold; font-size: 16px; background:  #8B0000; color: white;">
+                                    <button type="submit" class="btn" style=" width: 540px;font-weight: bold; font-size: 16px; background:  #8B0000; color: white;">
                                         Send
                                     </button>
                                 </div>

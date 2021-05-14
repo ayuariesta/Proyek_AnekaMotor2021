@@ -33,7 +33,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12 mt-2">
-				<form method="POST" action="{{ url('booking') }}/{{ auth()->user()->id }}" id="contactform">
+				<form method="POST" action="{{ url('/booking') }}/{{ auth()->user()->id }}" id="contactform">
 					{{ csrf_field() }}
 					<div class="form">
 						<div class="col">
