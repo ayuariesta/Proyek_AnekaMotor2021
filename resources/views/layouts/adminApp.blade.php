@@ -69,6 +69,13 @@
             </li>
 
             <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ url('index_get_category')}}">
+                    <i class="fas fa-archway"></i>
+                    <span>Category</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('bookingdata') }}">
                     <i class="far fa-clipboard"></i>
                     <span>Booking Service</span>

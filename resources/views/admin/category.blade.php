@@ -14,9 +14,9 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <div class="col-md-12">
-                <h6 class="m-0 font-weight-bold" style="color: 	#8B0000;">Type of Service Data
+                <h6 class="m-0 font-weight-bold" style="color: 	#8B0000;">CategorySparepart Data
                 <button style="float: right; font-weight: 600; background: 	#8B0000; color: white;" class="btn " type="button" data-toggle="modal" data-target="#CreateArticleModal">
-                    Create New Type
+                    Create New Category
                 </button>
                 </h6>
             </div>
@@ -28,7 +28,6 @@
                         <tr class="text-center">
                             <th>No</th>
                             <th>Name</th>
-                            <th>Price</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -43,7 +42,7 @@
         <div class="modal-content">
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">Type of Service Create</h4>
+                <h4 class="modal-title">Category Create</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <!-- Modal body -->
@@ -54,7 +53,7 @@
                     </button>
                 </div>
                 <div class="alert alert-success alert-dismissible fade show" role="alert" style="display: none;">
-                    <strong>Success!</strong>Tyoe of Service was added successfully.
+                    <strong>Success!</strong>New category was added successfully.
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -62,10 +61,6 @@
                 <div class="form-group">
                     <label for="title">Name:</label>
                     <input type="text" class="form-control" name="name" id="name">
-                </div>
-                <div class="form-group">
-                    <label for="price">Price:</label>
-                    <input class="form-control" name="price" id="price">
                 </div>
             </div>
             <!-- Modal footer -->
@@ -83,7 +78,7 @@
         <div class="modal-content">
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">Type of Service Edit</h4>
+                <h4 class="modal-title">Category Edit</h4>
                 <button type="button" class="close modelClose" data-dismiss="modal">&times;</button>
             </div>
             <!-- Modal body -->
@@ -94,7 +89,7 @@
                     </button>
                 </div>
                 <div class="alert alert-success alert-dismissible fade show" role="alert" style="display: none;">
-                    <strong>Success!</strong>Type of Service was added successfully.
+                    <strong>Success!</strong>Article was added successfully.
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -118,12 +113,12 @@
         <div class="modal-content">
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">Type of Service Delete</h4>
+                <h4 class="modal-title">Category Delete</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <!-- Modal body -->
             <div class="modal-body">
-                <h4>Are you sure want to delete this type of service?</h4>
+                <h4>Are you sure want to delete this category?</h4>
             </div>
             <!-- Modal footer -->
             <div class="modal-footer">
@@ -148,7 +143,7 @@
             serverSide: true,
             autoWidth: false,
             pageLength: 5,
-            ajax: "{{ route('index_get_typeService.index') }}",
+            ajax: "{{ route('index_get_category.index') }}",
             columns: [{
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex',
@@ -157,11 +152,6 @@
                 {
                     data: 'name',
                     name: 'name',
-                    sClass:'text-center'
-                },
-                {
-                    data: 'price',
-                    name: 'price',
                     sClass:'text-center'
                 },
                 {
@@ -182,11 +172,10 @@
                 }
             });
             $.ajax({
-                url: "{{ route('index_get_typeService.store') }}",
+                url: "{{ route('index_get_category.store') }}",
                 method: 'POST',
                 data: {
                     name: $('#name').val(),
-                    price: $('#price').val(),
                 },
                 success: function(result) {
                     if (result.errors) {
@@ -220,7 +209,7 @@
             $('.alert-danger').hide();
             id = $(this).data('id');
             $.ajax({
-                url: "index_get_typeService/"+id+"/edit",
+                url: "index_get_category/"+id+"/edit",
                 method: 'GET',
                 // data: {
                 //     id: id,
@@ -242,11 +231,10 @@
                 }
             });
             $.ajax({
-                url: "index_get_typeService/"+id,
+                url: "index_get_category/"+id,
                 method: 'PUT',
                 data: {
                     name: $('#editTitle').val(),
-                    price: $('#editDescription').val(),
                 },
                 success: function(result) {
                     if(result.errors) {
@@ -282,7 +270,7 @@
                 }
             });
             $.ajax({
-                url: "index_get_typeService/"+id,
+                url: "index_get_category/"+id,
                 method: 'DELETE',
                 success: function(result) {
                     setInterval(function(){ 
