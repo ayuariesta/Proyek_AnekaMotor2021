@@ -58,12 +58,12 @@
                         @endforeach
                         <table class="table table-striped"">
                         <thead>
-                            <tr style="color: gray;">
-                                <th>No.</th>
-                                <th>Sparepart Name</th>
-                                <th>Total Sparepart</th>
-                                <th>Price</th>
-                                <th style=" text-align: right;">Total Price</th>
+                            <tr style=" color: gray;">
+                            <th>No.</th>
+                            <th>Sparepart Name</th>
+                            <th>Total Sparepart</th>
+                            <th>Price</th>
+                            <th style=" text-align: right;">Total Price</th>
                             </thead>
                             <tbody>
                                 <?php $no = 1; ?>

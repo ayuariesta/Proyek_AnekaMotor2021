@@ -38,6 +38,8 @@ Route::get('/sparepart', [App\Http\Controllers\SparepartController::class, 'rend
 Route::get('cari',[App\Http\Controllers\SparepartController::class, 'cari']);
 Route::get('/sparepart/category/{category}', [App\Http\Controllers\CategoryController::class, 'render'])->name('spareparts.category');
 Route::get('invoice/{id}', [App\Http\Controllers\HistoryController::class, 'invoice']);
+Route::get('/serviceHistory',  [App\Http\Controllers\HistoryController::class, 'index_service'])->name('serviceHistory');
+Route::get('serviceHistory/{id}', [App\Http\Controllers\HistoryController::class, 'detail_service']);
 
 Route::group(['middleware' => 'is_admin'], function () {
     Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home');

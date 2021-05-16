@@ -78,7 +78,7 @@
                                 <a class="dropdown-item" href="{{ url('history') }}">
                                     Booking History
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="{{ url('serviceHistory') }}">
                                     Service History
                                 </a>
 

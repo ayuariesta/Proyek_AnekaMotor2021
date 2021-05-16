@@ -60,4 +60,25 @@ class HistoryController extends Controller
         }
      	return view('invoice', compact('bookings', 'booking', 'jenisServices', 'service_details', 'categories'));
     }
+
+    public function index_service()
+    {
+        $bookings = Service::where('user_id', Auth::user()->id)->get();
+        $categories = Category::all();
+        return view('serviceHistory', compact('bookings', 'categories'));
+    }
+
+    public function detail_service($id)
+    {
+        $booking = Service::where('id', $id)->first();
+        $bookings = Service::where('id', $booking->id)->get();
+        $categories = Category::all();
+        $service_details = [];
+        if(!empty($booking))
+        {
+            $service_details = DetailService::where('service_id', $booking->id)->get();
+
+        }
+        return view('detailService', compact('bookings', 'booking', 'categories', 'service_details'));
+    }
 }
