@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use Auth;
 use Alert;
+use App\Models\DetailService;
+use App\Models\JenisService;
 
 class HistoryController extends Controller
 {
@@ -42,5 +44,20 @@ class HistoryController extends Controller
     	$booking->update();
     	alert()->success('Booking successfully updated', 'Success');
     	return redirect('history');
+    }
+
+    public function invoice($id)
+    {
+    	$booking = Service::where('id', $id)->first();
+        $bookings = Service::where('id', $booking->id)->get();
+        $jenisServices = JenisService::all();
+        $categories = Category::all();
+ 		$service_details = [];
+        if(!empty($booking))
+        {
+            $service_details = DetailService::where('service_id', $booking->id)->get();
+
+        }
+     	return view('invoice', compact('bookings', 'booking', 'jenisServices', 'service_details', 'categories'));
     }
 }

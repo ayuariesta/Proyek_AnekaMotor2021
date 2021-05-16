@@ -32,10 +32,12 @@ Route::post('/historyEdit/{id}',  [App\Http\Controllers\HistoryController::class
 Route::get('/history', [App\Http\Controllers\HistoryController::class, 'index'])->name('history');
 Route::get('history/{id}', [App\Http\Controllers\HistoryController::class, 'detail']);
 Route::get('payment/{id}', [App\Http\Controllers\PaymentController::class, 'index']);
+Route::get('seePayment/{id}', [App\Http\Controllers\PaymentController::class, 'seePayment']);
 Route::post('payment/{id}', [App\Http\Controllers\PaymentController::class, 'save']);
 Route::get('/sparepart', [App\Http\Controllers\SparepartController::class, 'render'])->name('sparepart');
 Route::get('cari',[App\Http\Controllers\SparepartController::class, 'cari']);
 Route::get('/sparepart/category/{category}', [App\Http\Controllers\CategoryController::class, 'render'])->name('spareparts.category');
+Route::get('invoice/{id}', [App\Http\Controllers\HistoryController::class, 'invoice']);
 
 Route::group(['middleware' => 'is_admin'], function () {
     Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home');
@@ -49,4 +51,5 @@ Route::group(['middleware' => 'is_admin'], function () {
     Route::post('/sparepart/need/{id}', [App\Http\Controllers\Admin\InvoiceController::class, 'order']);
     Route::delete('sparepartDelete/{id}',  [App\Http\Controllers\Admin\InvoiceController::class, 'delete']);
     Route::post('InvoiceCompleted/{id}',[App\Http\Controllers\Admin\InvoiceController::class, 'konfirmasi']);
+    Route::get('bookingdata/invoiceDone/{id}', [App\Http\Controllers\Admin\InvoiceController::class, 'invoice']);
 });

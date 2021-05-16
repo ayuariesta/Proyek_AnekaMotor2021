@@ -48,12 +48,14 @@
                                     </td>
                                     @endif
                                     <td style="color: #444;">
-
+                                        @if($booking->status == 'pending' || $booking->status == 'Being serviced' || $booking->status == 'Queue available')
                                         <a href="{{ url('history') }}/{{ $booking->id }}" class="btn btn-primary"><i class="fa fa-info"></i> Detail Booking</a>
-                                        @if($booking->status == 'Service complete')
-                                        <a href="{{ url('payment') }}/{{ $booking->id }}" class="btn btn-primary"><i class="fa fa-info"></i> Input Payment</a>
-                                        @elseif ($booking->status == 'Payment confirmed')
-                                        <a href="#" class="btn btn-primary" <i class="fa fa-info"></i> See Payment</a>
+                                        @elseif($booking->status == 'Service complete' || $booking->status == 'Waiting for payment')
+                                        <a href="{{ url('invoice') }}/{{ $booking->id }}" class="btn btn-primary"><i class="fa fa-info"></i> Invoice</a>
+                                        <a href="{{ url('payment') }}/{{ $booking->id }}" class="btn btn-primary" <i class="fa fa-info"></i> Input Payment</a>
+                                        @elseif($booking->status == 'Already sent payment')
+                                        <a href="{{ url('invoice') }}/{{ $booking->id }}" class="btn btn-primary"><i class="fa fa-info"></i> Invoice</a>
+                                        <a href="{{ url('seePayment') }}/{{ $booking->id }}" class="btn btn-primary"><i class="fa fa-info"></i> See Payment</a>
                                         @endif
                                     </td>
                                 </tr>

@@ -124,6 +124,7 @@ class InvoiceController extends Controller
 		$service->tindakan = $request->tindakan;
         $service->total_price = $service->total_price + $jenisServices->price;
 		$service->jenis_service = $jenisServices->name;
+        $service->priceService = $jenisServices->price;
         $service->update();
 
         $service_details = DetailService::where('service_id',  $service_id)->get();
@@ -136,6 +137,20 @@ class InvoiceController extends Controller
         alert()->success('Invoice Successful completed. Please, tell the customer to pay!', 'Success');
         return redirect('bookingdata');
 
+    }
+
+    public function invoice($id)
+    {
+    	$booking = Service::where('id', $id)->first();
+        $bookings = Service::where('id', $booking->id)->get();
+        $jenisServices = JenisService::all();
+ 		$service_details = [];
+        if(!empty($booking))
+        {
+            $service_details = DetailService::where('service_id', $booking->id)->get();
+
+        }
+     	return view('admin.invoiceDone', compact('bookings', 'booking', 'jenisServices', 'service_details'));
     }
 
 }
