@@ -70,8 +70,15 @@
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ url('index_get_category')}}">
-                    <i class="fas fa-archway"></i>
+                    <i class="fas fa-atom"></i>
                     <span>Category</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ url('index_get_sparepart')}}">
+                    <i class="fas fa-archway"></i>
+                    <span>Sparepart</span>
                 </a>
             </li>
 

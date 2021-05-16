@@ -14,10 +14,10 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <div class="col-md-12">
-                <h6 class="m-0 font-weight-bold" style="color: 	#8B0000;">CategorySparepart Data
-                <button style="float: right; font-weight: 600; background: 	#8B0000; color: white;" class="btn " type="button" data-toggle="modal" data-target="#CreateArticleModal">
-                    Create New Category
-                </button>
+                <h6 class="m-0 font-weight-bold" style="color: 	#8B0000;">Sparepart Data
+                    <button style="float: right; font-weight: 600; background: 	#8B0000; color: white;" class="btn " type="button" data-toggle="modal" data-target="#CreateArticleModal">
+                        Create New Sparepart
+                    </button>
                 </h6>
             </div>
         </div>
@@ -27,7 +27,10 @@
                     <thead>
                         <tr class="text-center">
                             <th>No</th>
+                            <th>Category ID</th>
                             <th>Name</th>
+                            <th>Price</th>
+                            <th>Stock</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -42,7 +45,7 @@
         <div class="modal-content">
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">Category Create</h4>
+                <h4 class="modal-title">Sparepart Create</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <!-- Modal body -->
@@ -53,14 +56,31 @@
                     </button>
                 </div>
                 <div class="alert alert-success alert-dismissible fade show" role="alert" style="display: none;">
-                    <strong>Success!</strong>New category was added successfully.
+                    <strong>Success!</strong>New sparepart was added successfully.
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="form-group">
-                    <label for="title">Name:</label>
-                    <input type="text" class="form-control" name="name" id="name">
+                    <label for="catgeory_id">Category ID:</label>
+                    <select class="custom-select" name="category_id" id="category_id">
+                        <option selected>Select The Category</option>
+                        @foreach($categories as $category)
+                        <option  value="{{ $category->id }}">{{ $category->id }} - {{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="nameS">Name:</label>
+                    <input type="text" class="form-control" name="nameS" id="nameS">
+                </div>
+                <div class="form-group">
+                    <label for="price">Price:</label>
+                    <input type="text" class="form-control" name="price" id="price">
+                </div>
+                <div class="form-group">
+                    <label for="stock">Stock:</label>
+                    <input type="text" class="form-control" name="stock" id="stock">
                 </div>
             </div>
             <!-- Modal footer -->
@@ -78,7 +98,7 @@
         <div class="modal-content">
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">Category Edit</h4>
+                <h4 class="modal-title">Sparepart Edit</h4>
                 <button type="button" class="close modelClose" data-dismiss="modal">&times;</button>
             </div>
             <!-- Modal body -->
@@ -95,7 +115,7 @@
                     </button>
                 </div>
                 <div id="EditArticleModalBody">
-                    
+
                 </div>
             </div>
             <!-- Modal footer -->
@@ -113,12 +133,12 @@
         <div class="modal-content">
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">Category Delete</h4>
+                <h4 class="modal-title">Sparepart Delete</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <!-- Modal body -->
             <div class="modal-body">
-                <h4>Are you sure want to delete this category?</h4>
+                <h4>Are you sure want to delete this sparepart?</h4>
             </div>
             <!-- Modal footer -->
             <div class="modal-footer">
@@ -143,23 +163,38 @@
             serverSide: true,
             autoWidth: false,
             pageLength: 5,
-            ajax: "{{ route('index_get_category.index') }}",
+            ajax: "{{ route('index_get_sparepart.index') }}",
             columns: [{
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex',
-                    sClass:'text-center'
+                    sClass: 'text-center'
                 },
                 {
-                    data: 'name',
-                    name: 'name',
-                    sClass:'text-center'
+                    data: 'category_id',
+                    name: 'category_id',
+                    sClass: 'text-center'
+                },
+                {
+                    data: 'nameS',
+                    name: 'nameS',
+                    sClass: 'text-center'
+                },
+                {
+                    data: 'price',
+                    name: 'price',
+                    sClass: 'text-center'
+                },
+                {
+                    data: 'stock',
+                    name: 'stock',
+                    sClass: 'text-center'
                 },
                 {
                     data: 'action',
                     name: 'action',
                     orderable: true,
                     searchable: true,
-                    sClass:'text-center'
+                    sClass: 'text-center'
                 },
             ]
         });
@@ -172,10 +207,13 @@
                 }
             });
             $.ajax({
-                url: "{{ route('index_get_category.store') }}",
+                url: "{{ route('index_get_sparepart.store') }}",
                 method: 'POST',
                 data: {
-                    name: $('#name').val(),
+                    category_id: $('#category_id').val(),
+                    nameS: $('#nameS').val(),
+                    price: $('#price').val(),
+                    stock: $('#stock').val(),
                 },
                 success: function(result) {
                     if (result.errors) {
@@ -199,7 +237,7 @@
         });
 
         // Get single article in EditModel
-        $('.modelClose').on('click', function(){
+        $('.modelClose').on('click', function() {
             $('#EditArticleModal').hide();
         });
         var id;
@@ -209,7 +247,7 @@
             $('.alert-danger').hide();
             id = $(this).data('id');
             $.ajax({
-                url: "index_get_category/"+id+"/edit",
+                url: "index_get_sparepart/" + id + "/edit",
                 method: 'GET',
                 // data: {
                 //     id: id,
@@ -231,23 +269,25 @@
                 }
             });
             $.ajax({
-                url: "index_get_category/"+id,
+                url: "index_get_sparepart/" + id,
                 method: 'PUT',
                 data: {
-                    name: $('#editTitle').val(),
+                    nameS: $('#editTitle').val(),
+                    price: $('#editPrice').val(),
+                    stock: $('#editStock').val(),
                 },
                 success: function(result) {
-                    if(result.errors) {
+                    if (result.errors) {
                         $('.alert-danger').html('');
                         $.each(result.errors, function(key, value) {
                             $('.alert-danger').show();
-                            $('.alert-danger').append('<strong><li>'+value+'</li></strong>');
+                            $('.alert-danger').append('<strong><li>' + value + '</li></strong>');
                         });
                     } else {
                         $('.alert-danger').hide();
                         $('.alert-success').show();
                         $('.yajra-datatable').DataTable().ajax.reload();
-                        setInterval(function(){ 
+                        setInterval(function() {
                             $('.alert-success').hide();
                             $('#EditArticleModal').hide();
                         }, 2000);
@@ -256,9 +296,9 @@
             });
         });
 
-      // Delete article Ajax request.
-      var deleteID;
-        $('body').on('click', '#getDeleteId', function(){
+        // Delete article Ajax request.
+        var deleteID;
+        $('body').on('click', '#getDeleteId', function() {
             deleteID = $(this).data('id');
         })
         $('#SubmitDeleteArticleForm').click(function(e) {
@@ -270,10 +310,10 @@
                 }
             });
             $.ajax({
-                url: "index_get_category/"+id,
+                url: "index_get_sparepart/" + id,
                 method: 'DELETE',
                 success: function(result) {
-                    setInterval(function(){ 
+                    setInterval(function() {
                         $('.yajra-datatable').DataTable().ajax.reload();
                         $('#DeleteArticleModal').hide();
                     }, 1000);

@@ -46,6 +46,7 @@ Route::group(['middleware' => 'is_admin'], function () {
     Route::resource('index_get_user', 'App\Http\Controllers\Admin\CustomerController');
     Route::resource('index_get_typeService', 'App\Http\Controllers\Admin\TypeServiceController');
     Route::resource('index_get_category', 'App\Http\Controllers\Admin\CategoryController');
+    Route::resource('index_get_sparepart', 'App\Http\Controllers\Admin\SparepartController');
     Route::get('bookingdata', [App\Http\Controllers\Admin\BookingDataController::class, 'index'])->name('bookingdata');
     Route::get('bookingdata/detail/{id}', [App\Http\Controllers\Admin\BookingDataController::class, 'detail']);
     Route::post('bookingdata/detail/input_queue/{id}',[App\Http\Controllers\Admin\BookingDataController::class, 'save']);
