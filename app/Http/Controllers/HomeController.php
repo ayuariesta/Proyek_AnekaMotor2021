@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\JenisService;
 use App\Models\Category;
+use App\Models\Contact;
+use App\Models\Service;
+use App\Models\Sparepart;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -33,6 +38,16 @@ class HomeController extends Controller
 
     public function adminHome()
     {
-        return view('admin.adminHome');
+        $sparepart = Sparepart::count();
+        $category = Category::count();
+        $user = User::count();
+        $jenisService = JenisService::count();
+        $contact = Contact::count();
+        $booking = Service::count();
+        $users = User::select(DB::raw("COUNT(*) as count"))
+                    ->whereYear('created_at', date('Y'))
+                    ->groupBy(DB::raw("Month(created_at)"))
+                    ->pluck('count');
+        return view('admin.adminHome', compact('sparepart', 'category', 'user', 'jenisService', 'contact', 'booking', 'users'));
     }
 }
