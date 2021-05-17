@@ -80,16 +80,23 @@
 								<h6 class="m-0 font-weight-bold" style="color: 	#fff;">History your message</h6>
 							</div>
 							<div class="card-body">
-							<table class="table" >
-							<tbody>
-								@foreach($contacts as $contact)
-								<tr>
-									<td style="font-size: 13px; color: #444;">{{ $contact->pesan }}</td>
-									<td style="font-size: 13px; color: #444; text-align:right;">{{ $contact->created_at }}</td>
-								</tr>
-								@endforeach
-							</tbody>
-						</table>
+								<table class="table">
+									<tbody>
+										@foreach($contacts as $contact)
+										<tr>
+											<td style="font-size: 13px; color: #444;">{{ $contact->pesan }}</td>
+											<td style="font-size: 13px; color: #444; text-align:right;">{{ $contact->created_at }}</td>
+										</tr>
+										<tr>
+											@if($contact->reply == null)
+											<td style="color:#8B0000; font-size: 13px;">Sorry there has been no reply</td>
+											@else
+											<td style="color:#8B0000; font-size: 13px;">Admin Reply : {{ $contact->reply }}</td>
+											@endif
+										</tr>
+										@endforeach
+									</tbody>
+								</table>
 							</div>
 						</div>
 
@@ -106,10 +113,11 @@
 								<div class="text-center">
 									<img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="images/undraw_posting_photo.svg" alt="">
 								</div>
-								<p style="font-size: 13px; color: #444; text-align:justify;"> Motorbikes are a valuable asset in society because motorbikes can be a means of transportation, a hobby and, a lifestyle. 
-									Therefore, it is necessary to repair it periodically so that it is not damaged. 
-									Aneka Motor Wlingi provides a workshop that guarantees excellent, fast and affordable service quality 
-								<a target="_blank" rel="nofollow" href="{{ url('booking') }}">for booking now...</a></p>
+								<p style="font-size: 13px; color: #444; text-align:justify;"> Motorbikes are a valuable asset in society because motorbikes can be a means of transportation, a hobby and, a lifestyle.
+									Therefore, it is necessary to repair it periodically so that it is not damaged.
+									Aneka Motor Wlingi provides a workshop that guarantees excellent, fast and affordable service quality
+									<a target="_blank" rel="nofollow" href="{{ url('booking') }}">for booking now...</a>
+								</p>
 							</div>
 						</div>
 					</div>

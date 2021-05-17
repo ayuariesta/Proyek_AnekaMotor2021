@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Service;
 use Alert;
+use App\Models\Category;
+use App\Models\Payment;
 
 class BookingDataController extends Controller
 {
@@ -33,4 +35,11 @@ class BookingDataController extends Controller
         alert()->success('Input data is successfull');
         return redirect('bookingdata');
     }
+
+    public function seePayment($id){
+        $service = Service::where('id', $id)->first();
+        $payments = Payment::where('service_id', $service->id)->get();
+    	return view('admin.seePayment', compact('service', 'payments'));
+    }
+
 }

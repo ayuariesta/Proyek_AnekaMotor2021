@@ -21,7 +21,7 @@ Auth::routes();
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact');
+Route::get('/contactCus', [App\Http\Controllers\ContactController::class, 'index'])->name('contactCus');
 Route::post('contact/{id}', [App\Http\Controllers\ContactController::class, 'save']);
 Route::get('/about', [App\Http\Controllers\AboutController::class, 'index'])->name('about');
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
@@ -51,9 +51,13 @@ Route::group(['middleware' => 'is_admin'], function () {
     Route::get('bookingdata/detail/{id}', [App\Http\Controllers\Admin\BookingDataController::class, 'detail']);
     Route::post('bookingdata/detail/input_queue/{id}',[App\Http\Controllers\Admin\BookingDataController::class, 'save']);
     Route::get('bookingdata/invoice/{id}', [App\Http\Controllers\Admin\InvoiceController::class, 'detail']);
+    Route::get('seePayment/{id}', [App\Http\Controllers\Admin\BookingDataController::class, 'seePayment']);
     Route::get('/addSaprepart', [App\Http\Controllers\Admin\InvoiceController::class, 'render']);
     Route::post('/sparepart/need/{id}', [App\Http\Controllers\Admin\InvoiceController::class, 'order']);
     Route::delete('sparepartDelete/{id}',  [App\Http\Controllers\Admin\InvoiceController::class, 'delete']);
     Route::post('InvoiceCompleted/{id}',[App\Http\Controllers\Admin\InvoiceController::class, 'konfirmasi']);
     Route::get('bookingdata/invoiceDone/{id}', [App\Http\Controllers\Admin\InvoiceController::class, 'invoice']);
+    Route::get('/contact', [App\Http\Controllers\Admin\ContactController::class, 'render'])->name('contact');
+    Route::post('/message/reply/{id}', [App\Http\Controllers\Admin\ContactController::class, 'reply']);
+    Route::delete('/message/delete/{id}',  [App\Http\Controllers\Admin\ContactController::class, 'delete']);
 });

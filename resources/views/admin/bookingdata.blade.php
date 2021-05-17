@@ -42,8 +42,8 @@
                                             <a href="{{ url('bookingdata/invoice') }}/{{ $service->id }}" class="btn" style="background: #8B0000; color: white;"><i class="fa fa-info"></i> Input Invoice</a>
                                             @elseif($service->status == 'Waiting for payment')
                                             <a href="{{ url('bookingdata/invoiceDone') }}/{{ $service->id }}" class="btn" style="background: #8B0000; color: white;"><i class="fa fa-info"></i> Invoice</a>
-                                            @elseif($service->status == 'Payment success'||  $service->status == 'Waiting for payment')
-                                            <a href="#" class="btn" style="background: #8B0000; color: white;"><i class="fa fa-info"></i> See Payment</a>
+                                            @elseif($service->status == 'Already sent payment'||  $service->status == 'Waiting for payment')
+                                            <a href="{{ url('seePayment') }}/{{ $service->id }}" class="btn" style="background: #8B0000; color: white;"><i class="fa fa-info"></i> See Payment</a>
                                             @endif
                                         </td>
                                     </tr>

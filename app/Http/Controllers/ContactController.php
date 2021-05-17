@@ -35,7 +35,7 @@ class ContactController extends Controller
         $contact->pesan = $request->pesan;
         $contact->save();
         alert()->success('Thank you for contact us');
-        return redirect('contact');
+        return redirect('contactCus');
     }
 
 }

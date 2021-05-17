@@ -85,7 +85,7 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('contact') }}">Contact</a>
+                            <a class="nav-link" href="{{ route('contactCus') }}">Contact</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/about">About Us</a>
@@ -106,14 +106,6 @@
                         @endif
                         @else
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="fas fa-comments"></i>
-                                @if(!empty($notif))
-                                <span class="badge badge-danger">{{ $notif }}</span>
-                                @endif
-                            </a>
-                        </li>
 
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
