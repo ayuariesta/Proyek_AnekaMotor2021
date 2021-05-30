@@ -55,7 +55,7 @@
                                         <a href="{{ url('payment') }}/{{ $booking->id }}" class="btn btn-primary" <i class="fa fa-info"></i> Input Payment</a>
                                         @elseif($booking->status == 'Already sent payment')
                                         <a href="{{ url('invoice') }}/{{ $booking->id }}" class="btn btn-primary"><i class="fa fa-info"></i> Invoice</a>
-                                        <a href="{{ url('seePayment') }}/{{ $booking->id }}" class="btn btn-primary"><i class="fa fa-info"></i> See Payment</a>
+                                        <a href="{{ url('history/seePayment') }}/{{ $booking->id }}" class="btn btn-primary"><i class="fa fa-info"></i> See Payment</a>
                                         @endif
                                     </td>
                                 </tr>

@@ -8,6 +8,10 @@ use App\Models\Service;
 use Alert;
 use App\Models\Category;
 use App\Models\Payment;
+use App\Models\DetailService;
+use App\Models\JenisService;
+use Barryvdh\DomPDF\Facade as PDF;
+
 
 class BookingDataController extends Controller
 {
@@ -40,6 +44,20 @@ class BookingDataController extends Controller
         $service = Service::where('id', $id)->first();
         $payments = Payment::where('service_id', $service->id)->get();
     	return view('admin.seePayment', compact('service', 'payments'));
+    }
+
+    public function cetak_pdf($id)
+    {
+        $booking = Service::where('id', $id)->first();
+        $bookings = Service::where('id', $booking->id)->get();
+        $jenisServices = JenisService::all();
+        $categories = Category::all();
+        $service_details = [];
+        if (!empty($booking)) {
+            $service_details = DetailService::where('service_id', $booking->id)->get();
+        }
+        $pdf = PDF::loadview('invoice_pdf', ['booking' => $booking, 'bookings' => $bookings, 'jenisServices' => $jenisServices, 'categories'=>$categories, 'service_details'=>$service_details])->setPaper('a4', 'portrait');
+        return $pdf->stream();
     }
 
 }

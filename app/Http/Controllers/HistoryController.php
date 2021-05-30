@@ -9,6 +9,7 @@ use Auth;
 use Alert;
 use App\Models\DetailService;
 use App\Models\JenisService;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class HistoryController extends Controller
 {
@@ -35,30 +36,28 @@ class HistoryController extends Controller
     public function update(Request $request, $id)
     {
 
-    	$booking = Service::findOrFail($id);
-    	$booking->name_stnk = $request->name_stnk;
-    	$booking->number_plat = $request->number_plat;
-    	$booking->nama_motor = $request->nama_motor;
-    	$booking->jenis_motor= $request->jenis_motor;
-        $booking->complaint= $request->complaint;
-    	$booking->update();
-    	alert()->success('Booking successfully updated', 'Success');
-    	return redirect('history');
+        $booking = Service::findOrFail($id);
+        $booking->name_stnk = $request->name_stnk;
+        $booking->number_plat = $request->number_plat;
+        $booking->nama_motor = $request->nama_motor;
+        $booking->jenis_motor = $request->jenis_motor;
+        $booking->complaint = $request->complaint;
+        $booking->update();
+        alert()->success('Booking successfully updated', 'Success');
+        return redirect('history');
     }
 
     public function invoice($id)
     {
-    	$booking = Service::where('id', $id)->first();
+        $booking = Service::where('id', $id)->first();
         $bookings = Service::where('id', $booking->id)->get();
         $jenisServices = JenisService::all();
         $categories = Category::all();
- 		$service_details = [];
-        if(!empty($booking))
-        {
+        $service_details = [];
+        if (!empty($booking)) {
             $service_details = DetailService::where('service_id', $booking->id)->get();
-
         }
-     	return view('invoice', compact('bookings', 'booking', 'jenisServices', 'service_details', 'categories'));
+        return view('invoice', compact('bookings', 'booking', 'jenisServices', 'service_details', 'categories'));
     }
 
     public function index_service()
@@ -74,11 +73,23 @@ class HistoryController extends Controller
         $bookings = Service::where('id', $booking->id)->get();
         $categories = Category::all();
         $service_details = [];
-        if(!empty($booking))
-        {
+        if (!empty($booking)) {
             $service_details = DetailService::where('service_id', $booking->id)->get();
-
         }
         return view('detailService', compact('bookings', 'booking', 'categories', 'service_details'));
+    }
+
+    public function cetak_pdf($id)
+    {
+        $booking = Service::where('id', $id)->first();
+        $bookings = Service::where('id', $booking->id)->get();
+        $jenisServices = JenisService::all();
+        $categories = Category::all();
+        $service_details = [];
+        if (!empty($booking)) {
+            $service_details = DetailService::where('service_id', $booking->id)->get();
+        }
+        $pdf = PDF::loadview('invoice_pdf', ['booking' => $booking, 'bookings' => $bookings, 'jenisServices' => $jenisServices, 'categories'=>$categories, 'service_details'=>$service_details])->setPaper('a4', 'portrait');
+        return $pdf->stream();
     }
 }

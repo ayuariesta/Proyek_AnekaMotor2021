@@ -32,12 +32,13 @@ Route::post('/historyEdit/{id}',  [App\Http\Controllers\HistoryController::class
 Route::get('/history', [App\Http\Controllers\HistoryController::class, 'index'])->name('history');
 Route::get('history/{id}', [App\Http\Controllers\HistoryController::class, 'detail']);
 Route::get('payment/{id}', [App\Http\Controllers\PaymentController::class, 'index']);
-Route::get('seePayment/{id}', [App\Http\Controllers\PaymentController::class, 'seePayment']);
+Route::get('history/seePayment/{id}', [App\Http\Controllers\PaymentController::class, 'seePayment']);
 Route::post('payment/{id}', [App\Http\Controllers\PaymentController::class, 'save']);
 Route::get('/sparepart', [App\Http\Controllers\SparepartController::class, 'render'])->name('sparepart');
 Route::get('cari',[App\Http\Controllers\SparepartController::class, 'cari']);
 Route::get('/sparepart/category/{category}', [App\Http\Controllers\CategoryController::class, 'render'])->name('spareparts.category');
 Route::get('invoice/{id}', [App\Http\Controllers\HistoryController::class, 'invoice']);
+Route::get('/invoice/print/{id}', [App\Http\Controllers\HistoryController::class, 'cetak_pdf']);
 Route::get('/serviceHistory',  [App\Http\Controllers\HistoryController::class, 'index_service'])->name('serviceHistory');
 Route::get('serviceHistory/{id}', [App\Http\Controllers\HistoryController::class, 'detail_service']);
 
@@ -48,6 +49,7 @@ Route::group(['middleware' => 'is_admin'], function () {
     Route::resource('index_get_category', 'App\Http\Controllers\Admin\CategoryController');
     Route::resource('index_get_sparepart', 'App\Http\Controllers\Admin\SparepartController');
     Route::get('bookingdata', [App\Http\Controllers\Admin\BookingDataController::class, 'index'])->name('bookingdata');
+    Route::get('bookingdata/invoice/print/{id}', [App\Http\Controllers\Admin\BookingDataController::class, 'cetak_pdf']);
     Route::get('bookingdata/detail/{id}', [App\Http\Controllers\Admin\BookingDataController::class, 'detail']);
     Route::post('bookingdata/detail/input_queue/{id}',[App\Http\Controllers\Admin\BookingDataController::class, 'save']);
     Route::get('bookingdata/invoice/{id}', [App\Http\Controllers\Admin\InvoiceController::class, 'detail']);

@@ -3,11 +3,12 @@
 @section('content')
 <div class="col-md-12">
     <a href="{{ url('bookingdata') }}" class="btn" style=" background:  #8B0000; color: white;"><i class="fa fa-arrow-left"></i> Back</a>
+    @if(!empty($booking))
+    <a href="{{ url('bookingdata/invoice/print') }}/{{ $booking->id }}" class="btn" style=" background:  #8B0000; color: white;" target="_blank"><i class="fas fa-print"></i> Print PDF</a>
 </div>
 <div class="col-md-12">
     <div class="card mt-2">
         <div class="card-body" style="color: black;">
-            @if(!empty($booking))
             <div class="col-md-12">
                 <center>
                     <p style="color: #008080;"><b style="font-size: 20px;">Bengkel Aneka Motor Wlingi </b><br> Beru, Wlingi, Blitar, East Java 66184, Indonesia <br> No. HP : +62 857-8160-6016

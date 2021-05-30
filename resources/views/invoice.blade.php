@@ -4,22 +4,23 @@
 <br><br><br><br>
 <div class="col-md-12">
     <a href="{{ url('history') }}" class="btn" style=" background:  #8B0000; color: white;"><i class="fa fa-arrow-left"></i> Back</a>
+    @if(!empty($booking))
+    <a href="{{ url('invoice/print') }}/{{ $booking->id }}" class="btn" style=" background:  #8B0000; color: white;" target="_blank"><i class="fas fa-print"></i> Print PDF</a>
 </div>
 <div class="col-md-12">
     <div class="card mt-2">
         <div class="card-body" style="color: black;">
-            @if(!empty($booking))
             <div class="col-md-12">
                 <center>
                     <p style="color: #008080;"><b style="font-size: 24px;">Bengkel Aneka Motor Wlingi </b><br> Beru, Wlingi, Blitar, East Java 66184, Indonesia <br> No. HP : +62 857-8160-6016
                     </p>
                 </center>
                 <hr>
-                <h6 style="color: gray; font-size: 15px; ">No. Queue&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;: {{ $booking->queue }} <br> Service Date &nbsp;&nbsp;&nbsp;&nbsp;: {{ $booking->service_date }} <br> Name of STNK &nbsp;: {{ $booking->name_stnk }}</h6>
+                <h6 style="color: gray; font-size: 15px; ">No. Queue&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{ $booking->queue }} <br> Service Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{ $booking->service_date }} <br> Name of STNK &nbsp;: {{ $booking->name_stnk }}</h6>
                 <br>
                 <div class="card">
                     <div class="card-body">
-                        <h4 style="color: #8B0000;" <i class="fas fa-receipt" style="color: #8B0000;"></i> Invoice</h4>
+                        <h4 style="color: #8B0000;"><i class="fas fa-receipt" style="color: #8B0000;"></i> Invoice</h4>
                         <table class="table">
                             <tbody style="color: gray;">
                                 @foreach($bookings as $booking)
@@ -95,4 +96,5 @@
             </div>
         </div>
     </div>
-    @endsection
+</div>
+@endsection
