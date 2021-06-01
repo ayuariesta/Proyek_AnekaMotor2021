@@ -62,4 +62,6 @@ Route::group(['middleware' => 'is_admin'], function () {
     Route::get('/contact', [App\Http\Controllers\Admin\ContactController::class, 'render'])->name('contact');
     Route::post('/message/reply/{id}', [App\Http\Controllers\Admin\ContactController::class, 'reply']);
     Route::delete('/message/delete/{id}',  [App\Http\Controllers\Admin\ContactController::class, 'delete']);
+    Route::get('/profileAdmin', [App\Http\Controllers\ProfileController::class, 'indexAdmin'])->name('profileAdmin');
+    Route::post('/profileAdmin',  [App\Http\Controllers\ProfileController::class, 'profilAdmin']);
 });

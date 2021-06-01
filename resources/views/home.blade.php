@@ -57,7 +57,7 @@
 					<span class="numberstep"><i class="fas fa-tags"></i></i></span>
 					<h3 class="numbertext">Promo</h3>
 					<p>
-						Every motorbike service in our service shop 10 times will get a 10% discount for the next service (use discount is only valid once).
+						Every motorbike service in our service shop 10 times will get the best promo for the next service (use discount is only valid once).
 					</p>
 				</div>
 			</div>

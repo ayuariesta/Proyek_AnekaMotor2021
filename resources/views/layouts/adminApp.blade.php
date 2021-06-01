@@ -135,7 +135,7 @@
                                 <img class="img-profile rounded-circle" src="{{ asset('images/undraw_profile.svg') }}">
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ url('profile') }}">
+                                <a class="dropdown-item" href="{{ url('profileAdmin') }}">
                                     Profile
                                 </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
