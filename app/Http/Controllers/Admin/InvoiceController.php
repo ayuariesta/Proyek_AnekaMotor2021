@@ -33,7 +33,7 @@ class InvoiceController extends Controller
     {
         $spareparts =  DB::table('spareparts')
         ->join('categories', 'spareparts.category_id', '=', 'categories.id')
-        ->select('categories.name', 'spareparts.nameS', 'spareparts.price', 'spareparts.stock', 'spareparts.is_ready', 'spareparts.id')
+        ->select('categories.name', 'spareparts.nameS', 'spareparts.price', 'spareparts.stock', 'spareparts.id')
         ->get();
         $category = Category::all();
 		

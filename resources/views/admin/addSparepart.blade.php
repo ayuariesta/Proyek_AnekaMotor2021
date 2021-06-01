@@ -37,7 +37,7 @@
                                         <form method="post" action="{{ url('/sparepart/need') }}/{{ $sparepart->id }}">
                                             <input type="text" name="total_sparepart" class="form-control" required="" style="background-color: white; width: 100px;">
                                             @csrf
-                                            <button type="submit" class="btn" align="left" style="background: #8B0000; color: white;" @if($sparepart->is_ready !== 1) disabled @endif><i class="fas fa-shopping-cart"></i> Add</button>
+                                            <button type="submit" class="btn" align="left" style="background: #8B0000; color: white;" @if($sparepart->stock == 0) disabled @endif><i class="fas fa-shopping-cart"></i> Add</button>
                                         </form>
                                     </td>
                                 </tr>

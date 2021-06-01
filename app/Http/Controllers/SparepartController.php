@@ -10,7 +10,7 @@ class SparepartController extends Controller
 {
     public function cari(Request $request){
         $name = $request->name;
-        $spareparts = Sparepart::where('name','like',"%".$name."%")->paginate(3);
+        $spareparts = Sparepart::where('nameS','like',"%".$name."%")->paginate(3);
         return view('spareparts', [
             'spareparts' => $spareparts,
             'categories' => Category::all()
